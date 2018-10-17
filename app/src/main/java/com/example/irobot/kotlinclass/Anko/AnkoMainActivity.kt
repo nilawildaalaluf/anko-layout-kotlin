@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.example.irobot.kotlinclass.R.color.colorAccent
-import com.example.irobot.kotlinclass.R
 import org.jetbrains.anko.*
+import org.jetbrains.anko.design.snackbar
 import org.jetbrains.anko.sdk25.coroutines.onClick
 
 class AnkoMainActivity : AppCompatActivity() {
@@ -59,7 +59,24 @@ class AnkoMainActivityUI : AnkoComponent<AnkoMainActivity> {
                 }.lparams(width = matchParent){
                     topMargin = dip(5)
                 }
-
+            button("Show Snackbar"){
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
+                    textColor = Color.WHITE
+                    onClick {
+                        snackbar(name, "Hello, ${name.text}!")
+                    }
+                }.lparams(width = matchParent){
+                    topMargin = dip(5)
+                }
+            button("Show Progress Bar"){
+                    backgroundColor = ContextCompat.getColor(context, colorAccent)
+                    textColor = Color.WHITE
+                    onClick {
+                        indeterminateProgressDialog("Hello, ${name.text}! Please wait...").show()
+                    }
+                }.lparams(width = matchParent){
+                    topMargin = dip(5)
+                }
         }
     }
 
