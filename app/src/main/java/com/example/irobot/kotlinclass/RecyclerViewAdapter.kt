@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
+import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_list.view.*
 import org.jetbrains.anko.intentFor
 
@@ -21,7 +22,8 @@ class RecyclerViewAdapter(private val context: Context, private val items: List<
 
     override fun getItemCount(): Int = items.size
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
+    class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
+            LayoutContainer {
 
 //        private val name = view.findViewById<TextView>(R.id.name)
 //        private val image = view.findViewById<ImageView>(R.id.image)
